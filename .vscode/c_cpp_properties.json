@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "PhysicssukEditor Editor Win64 Development (Physicssuk)",
+            "compilerPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "C:\\Users\\Jisung\\Documents\\Unreal Projects\\Physicssuk\\.vscode\\compileCommands_Physicssuk.json"
+        },
+        {
+            "name": "Win32",
+            "compilerPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "C:\\Users\\Jisung\\Documents\\Unreal Projects\\Physicssuk\\.vscode\\compileCommands_Default.json"
+        }
+    ],
+    "version": 4
+}
