@@ -21,7 +21,7 @@ public:
 	// Focus transitioning to subwidgets for the gamepad
 	virtual FReply NativeOnFocusReceived(const FGeometry& InGeometry, const FFocusEvent& InFocusEvent) override;
 	
-	UFUNCTION(BlueprintCallable)
-	void SaveSettings();
+	
+
 	
 };

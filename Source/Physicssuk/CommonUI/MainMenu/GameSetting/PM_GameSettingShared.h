@@ -11,8 +11,6 @@
 /**
  * 
  */
-class UPM_LocalPlayer;
-
 UCLASS()
 class PHYSICSSUK_API UPM_GameSettingShared : public USaveGame
 {
@@ -26,41 +24,57 @@ public:
 	UFUNCTION()
 	double GetMouseSensitivityX() const { return MouseSensitivityX; }
 	UFUNCTION()
-	void SetMouseSensitivityX(double NewValue) { ChangeValueAndDirty(MouseSensitivityX, NewValue); }
+	void SetMouseSensitivityX(double NewValue){ChangeValueAndDirty(MouseSensitivityX, NewValue);}
+	UPROPERTY()
+	double MouseSensitivityX = 1.f;
+
+	UFUNCTION()
+	double GetMouseSensitivityY() const { return MouseSensitivityY; }
+	UFUNCTION()
+	void SetMouseSensitivityY(double NewValue){ChangeValueAndDirty(MouseSensitivityY, NewValue);}
+	UPROPERTY()
+	double MouseSensitivityY = 1.f;
+
+	UFUNCTION()
+	double GetOverallMouseSensitivity() const { return OverallMouseSensivity; }
+	UFUNCTION()
+	void SetOverallMouseSensitivityY(double NewValue){ChangeValueAndDirty(OverallMouseSensivity, NewValue);}
+	UPROPERTY()
+	double OverallMouseSensivity = 1.f;
+
 
 	UFUNCTION()
 	void ApplySettings();
 
-
-	UFUNCTION()
-	static UPM_GameSettingShared* LoadOrCreateSettings(const UPM_LocalPlayer* LocalPlayer);
-
 	UFUNCTION()
 	void SaveSettings();
 	
-	UPROPERTY()
-	double MouseSensitivityX = 1.f;
+	UFUNCTION()
+	static UPM_GameSettingShared* LoadOrCreateSettings(const UPM_LocalPlayer* LocalPlayer);
+	
+	UFUNCTION()
+	void DebugTimer();
 
-
+	bool IsTimerTick = false;
 private:
-	private:
-    	template<typename T>
-    	bool ChangeValueAndDirty(T& CurrentValue, const T& NewValue)
-    	{
-    		if (CurrentValue != NewValue)
-    		{
-    			CurrentValue = NewValue;
-    			bIsDirty = true;
-    			OnSettingChanged.Broadcast(this);
+	template<typename T>
+	bool ChangeValueAndDirty(T& CurrentValue, const T& NewValue)
+	{
+		if (CurrentValue != NewValue)
+		{
+			CurrentValue = NewValue;
+			bIsDirty = true;
+			OnSettingChanged.Broadcast(this);
     			
-    			return true;
-    		}
+			return true;
+		}
     
-    		return false;
-    	}
+		return false;
+	}
+	
     
-    	bool bIsDirty = false;
-    
-    	UPROPERTY(Transient)
-    	TObjectPtr<UPM_LocalPlayer> OwningPlayer = nullptr;
+    bool bIsDirty = false;
+   
+    UPROPERTY(Transient)
+    TObjectPtr<UPM_LocalPlayer> OwningPlayer = nullptr;
 };

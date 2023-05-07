@@ -10,7 +10,7 @@ public class Physicssuk : ModuleRules
 		
 		PublicIncludePaths.AddRange(new string[] { "Physicssuk" });
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "UMG", "CommonUI", "GameplayTags","DeveloperSettings"});
-		PrivateDependencyModuleNames.AddRange(new string[]{"Niagara", "GameSettings", "CommonUser", "CommonUI", "CommonInput", "CommonGame"});
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "UMG", "CommonUI", "GameplayTags","DeveloperSettings", "EnhancedInput"});
+		PrivateDependencyModuleNames.AddRange(new string[]{"Niagara", "GameSettings", "CommonUI", "CommonInput", "CommonGame", "Advertising", "CommonUser" });
 	}
 }

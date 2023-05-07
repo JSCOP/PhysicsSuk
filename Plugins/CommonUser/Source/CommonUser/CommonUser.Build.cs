@@ -13,7 +13,9 @@ public class CommonUser : ModuleRules
 		PublicIncludePaths.AddRange(
 			new string[] {
 				// ... add public include paths required here ...
+				"Runtime/Core/Public/Misc"
 			}
+			
 			);
 				
 		

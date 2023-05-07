@@ -11,6 +11,10 @@
 *.o
 *.obj
 
+pg/*
+
+
+
 #Always add content, Source, Config files
 !/Source
 !/Content

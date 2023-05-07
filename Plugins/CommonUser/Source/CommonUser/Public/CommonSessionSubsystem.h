@@ -7,7 +7,6 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UObject/StrongObjectPtr.h"
 #include "CommonUserTypes.h"
-
 #if COMMONUSER_OSSV1
 #include "OnlineSubsystemTypes.h"
 #include "Interfaces/OnlineSessionInterface.h"
@@ -16,8 +15,8 @@
 #include "Online/Lobbies.h"
 #endif // COMMONUSER_OSSV1
 
+#include "Misc/CoreMiscDefines.h"
 #include "CommonSessionSubsystem.generated.h"
-
 class UWorld;
 class FCommonSession_OnlineSessionSettings;
 
@@ -174,8 +173,6 @@ private:
 	UPROPERTY(BlueprintAssignable, Category = "Events", meta = (DisplayName = "On Search Finished", AllowPrivateAccess = true))
 	FCommonSession_FindSessionsFinishedDynamic K2_OnSearchFinished;
 };
-
-
 //////////////////////////////////////////////////////////////////////
 // CommonSessionSubsystem Events
 

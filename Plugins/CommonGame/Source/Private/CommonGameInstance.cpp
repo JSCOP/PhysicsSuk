@@ -44,7 +44,6 @@ void UCommonGameInstance::HandleSystemMessage(FGameplayTag MessageType, FText Ti
 		}
 	}
 }
-
 void UCommonGameInstance::HandlePrivilegeChanged(const UCommonUserInfo* UserInfo, ECommonUserPrivilege Privilege, ECommonUserAvailability OldAvailability, ECommonUserAvailability NewAvailability)
 {
 	// By default show errors and disconnect if play privilege for first player is lost

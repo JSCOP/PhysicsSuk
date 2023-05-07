@@ -7,7 +7,7 @@
 #include "Engine/GameInstance.h"
 #include "Engine/GameViewportClient.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-
+#include "CoreMiscDefines.h"
 #include "CommonUserSubsystem.generated.h"
 
 /** List of tags used by the common user subsystem */
@@ -31,6 +31,8 @@ struct COMMONUSER_API FCommonUserTags
 	/** This tag means the platform has a single online user and all players use index 0 */
 	static FNativeGameplayTag Platform_Trait_SingleOnlineUser; // Platform.Trait.SingleOnlineUser
 };
+
+
 
 /** Logical representation of an individual user, one of these will exist for all initialized local players */
 UCLASS(BlueprintType)

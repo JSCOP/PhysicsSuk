@@ -8,7 +8,7 @@
 #include "GameSettingCollection.h"
 #include "GameSettingValueScalarDynamic.h"
 #include "PM_GameSettingLocal.h"
-#include "PM_LocalPlayer.h"
+#include "GameFramework/PM_LocalPlayer.h"
 #include "DataSource/GameSettingDataSourceDynamic.h"
 #include "EditCondition/WhenCondition.h"
 
@@ -62,16 +62,41 @@ UGameSettingCollection* UPM_GameSettingRegistry::MouseAndKeyboardSettings(ULocal
 		Settings->AddEditCondition(WhenPlatformSupportsMouseAndKeyboard);
 
 		Sensitivity->AddSetting(Settings);
+	}
+	{
+		UGameSettingValueScalarDynamic* Settings = NewObject<UGameSettingValueScalarDynamic>();
+		Settings->SetDevName(TEXT("MouseSensitivityPitch"));
+		Settings->SetDisplayName(LOCTEXT("MouseSensitivityPitch_Name", "Y-Axis Sensitivity"));
+		Settings->SetDescriptionRichText(LOCTEXT("MouseSensitivityYaw_Description", "Sets the sensitivity of the mouse's Vertical (y) axis. With higher settings the camera will move faster when looking left and right with the mouse."));		
+		Settings->SetDynamicGetter(GET_SHARED_SETTINGS_FUNCTION_PATH(GetMouseSensitivityY));
+		Settings->SetDynamicSetter(GET_SHARED_SETTINGS_FUNCTION_PATH(SetMouseSensitivityY));
+		Settings->SetDefaultValue(GetDefault<UPM_GameSettingShared>()->GetMouseSensitivityY());
+		Settings->SetDisplayFormat(UGameSettingValueScalarDynamic::RawTwoDecimals);
+		Settings->SetSourceRangeAndStep(TRange<double>(0, 10), 0.01);
+		Settings->SetMinimumLimit(0.01);
 
-		Settings->SetDynamicGetter(MakeShared<FGameSettingDataSourceDynamic>(TArray<FString>({
-			((void)sizeof(&UPM_LocalPlayer::GetSharedSettings), L"GetSharedSettings"),
-				((void)sizeof(&UPM_GameSettingShared::GetMouseSensitivityX), L"GetMouseSensitivityX") })));
+		Settings->AddEditCondition(WhenPlatformSupportsMouseAndKeyboard);
 
-		Settings->SetDynamicSetter(MakeShared<FGameSettingDataSourceDynamic>(TArray<FString>({
-			((void)sizeof(&UPM_LocalPlayer::GetSharedSettings), L"GetSharedSettings"),
-				((void)sizeof(&UPM_GameSettingShared::SetMouseSensitivityX), L"SetMouseSensitivityX") })));
+		Sensitivity->AddSetting(Settings);
+	}
+	{
+		UGameSettingValueScalarDynamic* Settings = NewObject<UGameSettingValueScalarDynamic>();
+		Settings->SetDevName(TEXT("MouseOverallSensivity"));
+		Settings->SetDisplayName(LOCTEXT("MouseSensitivity_Overall", "Overall Mouse Sensitivity"));
+		Settings->SetDescriptionRichText(LOCTEXT("OverallMouseSensitivity_Description", "Sets the sensitivity of the mouse's both axis. With higher settings the camera will move faster when looking left and right with the mouse."));		
+		Settings->SetDynamicGetter(GET_SHARED_SETTINGS_FUNCTION_PATH(GetOverallMouseSensitivity));
+		Settings->SetDynamicSetter(GET_SHARED_SETTINGS_FUNCTION_PATH(SetOverallMouseSensitivityY));
+		Settings->SetDefaultValue(GetDefault<UPM_GameSettingShared>()->GetOverallMouseSensitivity());
+		Settings->SetDisplayFormat(UGameSettingValueScalarDynamic::RawTwoDecimals);
+		Settings->SetSourceRangeAndStep(TRange<double>(0, 10), 0.01);
+		Settings->SetMinimumLimit(0.01);
 
-	}	
+		Settings->AddEditCondition(WhenPlatformSupportsMouseAndKeyboard);
+
+		Sensitivity->AddSetting(Settings);
+	}
+
+	
 	return Screen;
 	
 }
@@ -79,11 +104,11 @@ UGameSettingCollection* UPM_GameSettingRegistry::MouseAndKeyboardSettings(ULocal
 void UPM_GameSettingRegistry::SaveChanges()
 {
 	Super::SaveChanges();
-	
-	if (UPM_LocalPlayer* LocalPlayer = Cast<UPM_LocalPlayer>(OwningLocalPlayer))
+
+	//Save the mouse and keyboard settings
+	if(UPM_LocalPlayer* LocalPlayer = Cast<UPM_LocalPlayer>(OwningLocalPlayer))
 	{
-		// Game user settings need to be applied to handle things like resolution, this saves indirectly
-		LocalPlayer->GetLocalSettings()->ApplySettings(false);
+		LocalPlayer->GetLocalSettings()->ApplySettings(true);//Let's findout what is this true for.
 		
 		LocalPlayer->GetSharedSettings()->ApplySettings();
 		LocalPlayer->GetSharedSettings()->SaveSettings();

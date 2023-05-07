@@ -23,5 +23,6 @@ public:
 
 	virtual void NativeOnActivated() override;
 	
-	 
+	UFUNCTION(BlueprintCallable)
+	void DebugBreakpoint();
 };

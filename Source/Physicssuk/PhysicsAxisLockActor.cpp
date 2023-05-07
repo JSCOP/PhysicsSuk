@@ -48,7 +48,6 @@ void APhysicsAxisLockActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	int32 RotationValue = FMath::RoundToInt(GetActorRotation().Roll / 90.f * 90.f);
-	LOG_M(1, "%d", RotationValue);
 	switch (RotationValue)
 	{
 	case 90:

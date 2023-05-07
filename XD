@@ -1,0 +1,35 @@
+[33mcommit f5eb9424125ee04f13eb7917396d664254b28b15[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Jisung <mineloop08@gmail.com>
+Date:   Sun May 7 12:23:28 2023 +0900
+
+    Ttest
+
+[33mcommit 02e469e36cec586ada7c9bab0c1e56614e5b4bde[m
+Author: Jisung <mineloop08@gmail.com>
+Date:   Sun May 7 12:08:52 2023 +0900
+
+    Change gitignore
+
+[33mcommit b973abd41ba2b36b25385970b431899372a09b4e[m
+Author: Jisung <mineloop08@gmail.com>
+Date:   Sun May 7 12:00:32 2023 +0900
+
+    Change Unreal engine version to 5.0.3
+
+[33mcommit d50e876284ce489ce392ae817f115deab258192e[m
+Author: Jisung <mineloop08@gmail.com>
+Date:   Wed May 3 12:41:47 2023 +0900
+
+    Mobile input setup and customization
+
+[33mcommit 9e890205ae9c1c50b2c62aab45afafc7ef14c50d[m
+Author: Jisung <mineloop08@gmail.com>
+Date:   Wed May 3 12:40:11 2023 +0900
+
+    Mobile Setup and input customize
+
+[33mcommit ce90d63a9f9648ba747701a2d81124a63c2c6332[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Jisung <mineloop08@gmail.com>
+Date:   Fri Mar 31 01:44:03 2023 +0900
+
+    Initialize with LFS for large files

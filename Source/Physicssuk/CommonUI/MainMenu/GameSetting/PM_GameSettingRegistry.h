@@ -7,6 +7,7 @@
 
 #include "PM_GameSettingRegistry.generated.h"
 
+class UPM_GameSettingShared;
 /**
  * 
  */
@@ -36,4 +37,5 @@ protected:
 
 	UFUNCTION()
 	virtual void SaveChanges() override;
+	
 };

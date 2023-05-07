@@ -68,16 +68,24 @@ static int32 GetNetworkIndex(UObject* SpecialObject)
 }
 
 //메세지만 화면, 콘솔에 띄움.
-#define LOG_M(Key, Format, ...) GEngine->AddOnScreenDebugMessage(Key + GetNetModeToInt(GetWorld()->GetNetMode()) + GetSpecialNumber(this), 0.3f, FColor::Red, GetNetModeToString(GetWorld()->GetNetMode()) + FString::Printf(TEXT(Format), ##__VA_ARGS__))
+#define LOG_K(Key, Format, ...) GEngine->AddOnScreenDebugMessage(Key, 1.f, FColor::Red, FString::Printf(TEXT(Format), ##__VA_ARGS__))
+
+#define LOG_ALL(Key, Format, HowLong, Color, ...) GEngine->AddOnScreenDebugMessage(Key, HowLong, Color, FString::Printf(TEXT(Format), ##__VA_ARGS__))
+
+#define LOG_FL(Format, HowLong, ...) GEngine->AddOnScreenDebugMessage(-1, HowLong, Color, FString::Printf(TEXT(Format), ##__VA_ARGS__))
+
+#define LOG_CALLINFO (FString(__FUNCTION__) + TEXT("(") + FString::FromInt(__LINE__) + TEXT(")"))
 
 #define LOG(Format, ...)  GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, GetNetModeToString(GetWorld()->GetNetMode()) + FString::Printf(TEXT(Format), ##__VA_ARGS__));\
-UE_LOG(LogPhysicssuk, Warning, TEXT("%s"Format),*GetNetModeToString(GetWorld()->GetNetMode()), ##__VA_ARGS__)
+UE_LOG(LogPhysicssuk, Warning, TEXT("%s " Format),*GetNetModeToString(GetWorld()->GetNetMode()), ##__VA_ARGS__)
 
 //Call it Inside of component.
 #define IS_CLIENT GetOwner()->GetLocalRole() == ENetRole::ROLE_AutonomousProxy && GetNetMode() == NM_Client
 //Call it Inside of component.
 #define IS_SERVER GetNetMode() == NM_ListenServer || GetNetMode() == NM_DedicatedServer || GetOwner()->GetLocalRole() == ROLE_Authority
 
+#define SETTIMER(Amount, Function) FTimerHandle TimerHandle;\
+GetWorld()->GetTimerManager().SetTimer(TimerHandle,Function, Amount, false, -1.f)
 
 
 

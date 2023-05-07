@@ -4,12 +4,14 @@
 #include "PM_GameSettingPanel.h"
 
 #include "CommonUserSubsystem.h"
-#include "PM_LocalPlayer.h"
+#include "GameFramework/PM_LocalPlayer.h"
 #include "CommonUI/MainMenu/GameSetting/PM_GameSettingShared.h"
 
 void UPM_GameSettingPanel::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
+
+	
 }
 
 void UPM_GameSettingPanel::NativeConstruct()
@@ -27,12 +29,3 @@ FReply UPM_GameSettingPanel::NativeOnFocusReceived(const FGeometry& InGeometry, 
 	return Super::NativeOnFocusReceived(InGeometry, InFocusEvent);
 }
 
-void UPM_GameSettingPanel::SaveSettings()
-{
-	UPM_LocalPlayer* LocalPlayer = Cast<UPM_LocalPlayer>(GetOwningLocalPlayer());
-	if(IsValid(LocalPlayer))
-	{
-		UPM_GameSettingShared* SettingShared = UPM_GameSettingShared::LoadOrCreateSettings(LocalPlayer);
-		SettingShared->SaveSettings();
-	}
-}

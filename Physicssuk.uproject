@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.1",
+	"EngineAssociation": "{EC2A83D4-4659-4841-59DB-C0AFC2922F03}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -17,11 +17,6 @@
 	],
 	"Plugins": [
 		{
-			"Name": "FlatNodes",
-			"Enabled": false,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/b719437f3fb54c259b34227363df8cab"
-		},
-		{
 			"Name": "GameFeatures",
 			"Enabled": true
 		},
@@ -34,11 +29,15 @@
 			"Enabled": true
 		},
 		{
-			"Name": "CommonUser",
+			"Name": "CommonUI",
 			"Enabled": true
 		},
 		{
-			"Name": "CommonUI",
+			"Name": "ControlFlows",
+			"Enabled": true
+		},
+		{
+			"Name": "ConsoleVariables",
 			"Enabled": true
 		}
 	]
